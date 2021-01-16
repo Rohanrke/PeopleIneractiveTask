@@ -1,0 +1,106 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+
+def final yourApplicationId = 'com.peopleinteractive.task'
+
+
+android {
+    compileSdkVersion rootProject.ext.buildToolsVersions.compileSdk
+    buildToolsVersion rootProject.ext.buildToolsVersions.buildTool
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    defaultConfig {
+        applicationId "com.peopleinteractive.task"
+        minSdkVersion rootProject.ext.buildToolsVersions.minSdk
+        targetSdkVersion rootProject.ext.buildToolsVersions.targetSdk
+        versionCode rootProject.ext.appVersion.code
+        versionName "${rootProject.ext.appVersion.major}.${rootProject.ext.appVersion.release}." +
+                "${rootProject.ext.appVersion.minor}"
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+
+    productFlavors {
+        dev {
+            dimension "version"
+            buildConfigField "String", "BASE_URL", "\"http://ec2-13-234-53-148.ap-south-1.compute.amazonaws.com/\""
+            applicationId yourApplicationId
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+
+//        production {
+//            dimension "version"
+//            buildConfigField "String", "BASE_URL", "\"http://ec2-13-234-53-148.ap-south-1.compute.amazonaws.com/\""
+//            applicationId yourApplicationId
+//            //  applicationIdSuffix ".full"
+//            versionNameSuffix ""
+//        }
+    }
+
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def flavor = variant.name
+            def versionName = variant.versionName
+            outputFileName = "booked_${flavor}_${versionName}.apk"
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+
+dependencies {
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    api project(':data')
+    api project(':domain')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+
+}
