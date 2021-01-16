@@ -9,10 +9,11 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.peopleinteractive.core.navigation.NavigationContract
 
 abstract class BaseActivity<VDB : ViewDataBinding> constructor(
     @LayoutRes private val layoutResId: Int
-) : AppCompatActivity() {
+) : AppCompatActivity(), NavigationContract {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,7 @@ abstract class BaseActivity<VDB : ViewDataBinding> constructor(
             this.lifecycleOwner = this@BaseActivity
             initComponents(savedInstanceState, this)
         }
+        observeLiveEvents()
     }
 
 

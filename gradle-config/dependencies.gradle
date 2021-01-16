@@ -24,16 +24,6 @@ deps.android_arch.liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${rootPr
 deps.android_arch.testing = "androidx.arch.core:core-testing:${rootProject.ext.libraryVersions.arch_version}"
 deps.android_arch.annotation = "androidx.lifecycle:lifecycle-compiler:${rootProject.ext.libraryVersions.lifecycle_version}"
 
-
-deps.navigation = [:]
-deps.navigation.fragment = "androidx.navigation:navigation-fragment-ktx:${rootProject.ext.libraryVersions.nav_version}"
-deps.navigation.ui = "androidx.navigation:navigation-ui-ktx:${rootProject.ext.libraryVersions.nav_version}"
-
-
-deps.paging = [:]
-deps.paging.runtime = "androidx.paging:paging-runtime:${rootProject.ext.libraryVersions.pagingVersion}"
-
-
 deps.room = [:]
 deps.room.runtime = "androidx.room:room-runtime:${rootProject.ext.libraryVersions.room_version}"
 deps.room.compiler = "androidx.room:room-compiler:${rootProject.ext.libraryVersions.room_version}"
@@ -78,24 +68,18 @@ deps.mockk = [:]
 deps.mockk.core = "io.mockk:mockk:${rootProject.ext.libraryVersions.mockk}"
 deps.mockk.android = "io.mockk:mockk-android:${rootProject.ext.libraryVersions.mockk}"
 
-deps.hawk = [:]
-deps.hawk.core = "com.orhanobut:hawk:${rootProject.ext.libraryVersions.hawk}"
-
 
 deps.chuck = [:]
 deps.chuck.debug = "com.readystatesoftware.chuck:library:${rootProject.ext.libraryVersions.chuck}"
 deps.chuck.release = "com.readystatesoftware.chuck:library-no-op:${rootProject.ext.libraryVersions.chuck}"
 
-deps.customView = [:]
-deps.customView.pageIndicator = "com.github.zhpanvip:viewpagerindicator:${rootProject.ext.libraryVersions.page_indicator}"
-deps.customView.otpView = "com.github.mukeshsolanki:android-otpview-pinview:${rootProject.ext.libraryVersions.otpView}"
-deps.customView.circleImageView = "de.hdodenhof:circleimageview:${rootProject.ext.libraryVersions.cicleImageView}"
-deps.customView.shapeImageView = "com.github.siyamed:android-shape-imageview:${rootProject.ext.libraryVersions.shapeImageView}"
 
 deps.tools = [:]
 deps.tools.javax_inject = "javax.inject:javax.inject:${rootProject.ext.libraryVersions.inject}"
 
 
 
-
+deps.coroutine = [:]
+deps.coroutine.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext.libraryVersions.coroutine_version}"
+deps.coroutine.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.libraryVersions.coroutine_version}"
 

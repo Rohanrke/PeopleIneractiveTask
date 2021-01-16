@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.peopleinteractive.core.presentation.ProgressState" />
+
+        <variable
+            name="viewModel"
+            type="com.peopleinteractive.task.feature.home.HomeViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.peopleinteractive.task.feature.home.HomeListAdapter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:layout_width="@dimen/height_50"
+            android:layout_height="@dimen/height_50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:visible="@{viewModel.state == ProgressState.LOADING}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

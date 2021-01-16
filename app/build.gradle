@@ -103,4 +103,26 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 
+
+    // DI
+    implementation deps.koin.core
+    implementation deps.koin.android
+    implementation deps.koin.viewmodel
+
+
+    //Android libraries
+    implementation deps.android_support.appcompat
+    implementation deps.android_support.multidex
+    implementation deps.android_support.cardview
+    implementation deps.android_support.swiperefreshlayout
+    implementation deps.android_support.design
+    implementation deps.android_support.recyclerview
+    implementation deps.android_support.annotations
+    implementation deps.android_support.constraint_layout
+    implementation deps.android_support.fragment_ktx
+
+
+
+
+
 }

@@ -44,4 +44,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation deps.network.retrofit_converter_gson
+
+    // Room components
+    implementation deps.room.runtime
+    implementation deps.room.coroutines
+    kapt deps.room.compiler
+    androidTestImplementation deps.room.testing
+
+
 }

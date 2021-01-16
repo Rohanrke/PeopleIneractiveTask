@@ -1,7 +1,8 @@
-package com.peopleinteractive.task
+package com.peopleinteractive.task.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.peopleinteractive.task.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
