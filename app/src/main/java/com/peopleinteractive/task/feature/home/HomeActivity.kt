@@ -1,6 +1,7 @@
 package com.peopleinteractive.task.feature.home
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.peopleinteractive.core.navigation.NavigationContract
@@ -9,7 +10,7 @@ import com.peopleinteractive.task.databinding.ActivityHomeBinding
 import com.peopleinteractive.task.R
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeActivity: BaseActivity<ActivityHomeBinding>(R.layout.activity_home){
+class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
     lateinit var binding: ActivityHomeBinding
 
@@ -19,17 +20,19 @@ class HomeActivity: BaseActivity<ActivityHomeBinding>(R.layout.activity_home){
 
     override fun initComponents(savedInstanceState: Bundle?, binding: ActivityHomeBinding) {
         this.binding = binding
+        binding.viewModel = viewModel
         initListView()
+        viewModel.fetchUsers()
     }
 
-    private fun initListView(){
-       adapter = HomeListAdapter(viewModel)
-       binding.adapter = adapter
+    private fun initListView() {
+        adapter = HomeListAdapter(viewModel)
+        binding.adapter = adapter
     }
 
     override fun observeLiveEvents() {
-
+        viewModel.userListLiveData.observe(this, Observer {
+            adapter.submitList(it)
+        })
     }
-
-
 }

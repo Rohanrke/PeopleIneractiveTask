@@ -1,6 +1,7 @@
-package com.peopleinteractive.core.di
+package com.peopleinteractive.data.di
 
 import com.google.gson.GsonBuilder
+import com.peopleinteractive.data.remote.service.UserService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.BuildConfig
@@ -12,8 +13,14 @@ import timber.log.Timber
 fun retrofitModule() = module {
     single { provideLoggingInterceptor() }
     single { provideOkHttpClient(get()) }
-    single { provideRetrofit(get(), get(), GsonConverterFactory.create(GsonBuilder().create())) }
-   // single { provideYouTubeApi(get()) }
+    single {
+        provideRetrofit(
+            "https://randomuser.me",
+            get(),
+            GsonConverterFactory.create(GsonBuilder().create())
+        )
+    }
+    single { provideUserService(get()) }
 }
 
 /*
@@ -37,8 +44,9 @@ fun provideLoggingInterceptor() =
 
 fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient.Builder {
     val httpClient = OkHttpClient.Builder()
-    if (BuildConfig.DEBUG) httpClient.addInterceptor(httpLoggingInterceptor)
+    httpClient.addInterceptor(httpLoggingInterceptor)
     Timber.v("")
     return httpClient
 }
 
+fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)

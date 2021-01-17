@@ -61,17 +61,11 @@ dependencies {
     kapt  deps.glide.compiler
 
     //Logging
-    implementation deps.logging.timber
+    api deps.logging.timber
 
     //Parcel
     implementation  deps.paperparcel.core
     kapt  deps.paperparcel.compiler
-
-    //Network
-    implementation deps.network.retrofit_core
-    implementation deps.network.retrofit_converter_gson
-    //Logging
-    implementation deps.logging.okhttp_logging_interceptor
 
     implementation deps.tools.javax_inject
 

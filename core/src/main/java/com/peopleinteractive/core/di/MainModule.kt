@@ -1,8 +1,9 @@
 package com.peopleinteractive.core.di
 
-import androidx.lifecycle.ProcessLifecycleOwner
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
-val mainModule = module {
-   // single { ProcessLifecycleOwner.get().lifecycle.coroutineScope }
+
+fun mainModule() = module {
+    single { androidApplication() }
 }
