@@ -2,6 +2,7 @@ package com.peopleinteractive.task.feature.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -37,11 +38,35 @@ class HomeListAdapter(private val homeViewModel: HomeViewModel) :
         }
     }
 
-    inner class HomeViewHolder(val binding: ItemHomeListBinding) :
+    inner class HomeViewHolder(private val binding: ItemHomeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(user: User) {
+            binding.user = user
+            binding.btnAccept.setOnClickListener {
+                if (!user.isAccepted && !user.isDeclined) {
+                    user.isAccepted = true
+                    homeViewModel.updateUser(user)
 
+                    binding.btnAccept.apply {
+                        text = context.getString(R.string.text_accepted)
+                        backgroundTintList = ContextCompat.getColorStateList(context, R.color.accept_color_state_list)
+                    }
+
+                }
+            }
+
+            binding.btnDecline.setOnClickListener {
+                if (!user.isAccepted && !user.isDeclined) {
+                    user.isDeclined = true
+                    homeViewModel.updateUser(user)
+
+                    binding.btnDecline.apply {
+                        text = context.getString(R.string.text_declined)
+                        backgroundTintList = ContextCompat.getColorStateList(context, R.color.decline_color_state_list)
+                    }
+                }
+            }
         }
 
     }

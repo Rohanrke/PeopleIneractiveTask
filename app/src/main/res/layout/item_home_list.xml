@@ -1,8 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="user"
+            type="com.peopleinteractive.domain.entity.User" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layoutPadding"
+        app:cardCornerRadius="@dimen/cornerRadius">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_300">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:imageUri="@{user.large}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layoutPadding"
+                android:fontFamily="@font/googlesans_bold"
+                android:textSize="@dimen/text_size_medium"
+                app:firstName="@{user.first}"
+                app:lastName="@{user.last}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_address"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@{user.title}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layoutPadding"
+                android:fontFamily="@font/googlesans_bold"
+                android:textSize="@dimen/text_size_medium"
+                app:city="@{user.city}"
+                app:country="@{user.country}"
+                app:layout_constraintBottom_toTopOf="@+id/btn_accept"
+                app:layout_constraintStart_toStartOf="parent"
+                app:state="@{user.state}" />
+
+            <Button
+                android:id="@+id/btn_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/height_50"
+                android:layout_marginBottom="@dimen/layoutMarginLarge"
+                android:backgroundTint="@color/cardview_dark_background"
+                android:fontFamily="@font/googlesans_regular"
+                android:padding="@dimen/layoutPadding"
+                app:accepted="@{user.accepted}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/text_accept" />
+
+            <Button
+                android:id="@+id/btn_decline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/height_50"
+                android:layout_marginBottom="@dimen/layoutMarginLarge"
+                android:backgroundTint="@color/cardview_dark_background"
+                android:fontFamily="@font/googlesans_regular"
+                android:padding="@dimen/layoutPadding"
+                app:declined="@{user.declined}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@string/text_decline" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

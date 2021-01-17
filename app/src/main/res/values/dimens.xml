@@ -2,5 +2,12 @@
 <resources>
 
     <dimen name="height_50">50dp</dimen>
+    <dimen name="height_300">300dp</dimen>
+
+    <dimen name="text_size_medium">14sp</dimen>
+
+    <dimen name="layoutPadding">8dp</dimen>
+    <dimen name="layoutMarginLarge">16dp</dimen>
+    <dimen name="cornerRadius">8dp</dimen>
 
 </resources>

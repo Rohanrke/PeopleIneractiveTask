@@ -19,7 +19,9 @@ class UserDomainMapper {
             country = entity.state,
             postCode = entity.postCode,
             cell = entity.cell,
-            gender = entity.gender
+            gender = entity.gender,
+            isAccepted = entity.isAccepted,
+            isDeclined = entity.isDeclined
         )
     }
 }

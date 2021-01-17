@@ -24,7 +24,7 @@ class App : Application(), KoinComponent {
             androidLogger()
             androidContext(this@App)
             koin.loadModules(
-                listOf(repositoryModule(),  databaseModule(), mapperModule(), retrofitModule(), homeScope())
+                listOf(repositoryModule(),  databaseModule(), mapperModule(), retrofitModule(), homeScope(), mainModule())
             )
             koin.createRootScope()
         }

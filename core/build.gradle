@@ -56,9 +56,6 @@ dependencies {
     testImplementation deps.android_arch.testing
     kapt deps.android_arch.annotation
 
-    //Glide
-    implementation  deps.glide.core
-    kapt  deps.glide.compiler
 
     //Logging
     api deps.logging.timber

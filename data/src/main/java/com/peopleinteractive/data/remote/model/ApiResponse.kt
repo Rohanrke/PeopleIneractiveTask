@@ -1,3 +1,3 @@
 package com.peopleinteractive.data.remote.model
 
-data class ApiResponse(val results: List<UserModel>?)
+data class ApiResponse<T>(val data: T?, val status: Boolean = false)

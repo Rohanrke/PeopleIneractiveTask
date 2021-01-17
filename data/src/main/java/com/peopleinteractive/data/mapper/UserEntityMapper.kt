@@ -19,7 +19,9 @@ class UserEntityMapper {
             country = user.state,
             postCode = user.postCode,
             cell = user.cell,
-            gender = user.gender
+            gender = user.gender,
+            isAccepted = user.isAccepted,
+            isDeclined = user.isDeclined
         )
     }
 }

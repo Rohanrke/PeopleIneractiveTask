@@ -83,3 +83,6 @@ deps.coroutine = [:]
 deps.coroutine.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext.libraryVersions.coroutine_version}"
 deps.coroutine.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.libraryVersions.coroutine_version}"
 
+deps.ui = [:]
+deps.ui.flashbar = "com.andrognito.flashbar:flashbar:${rootProject.ext.libraryVersions.flashbar_version}"
+

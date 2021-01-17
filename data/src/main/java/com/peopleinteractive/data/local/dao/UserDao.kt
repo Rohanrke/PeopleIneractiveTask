@@ -18,4 +18,8 @@ interface UserDao {
 
     @Query("SELECT * FROM user ORDER BY phone DESC")
     fun getAllUsers(): List<UserEntity>
+
+    @Query("DELETE FROM user")
+    fun deleteAll()
+
 }

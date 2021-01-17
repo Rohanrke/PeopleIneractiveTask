@@ -6,5 +6,5 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 fun homeScope() = module {
-    viewModel { HomeViewModel(Dispatchers.IO, get()) }
+    viewModel { HomeViewModel(Dispatchers.IO, get(), get()) }
 }

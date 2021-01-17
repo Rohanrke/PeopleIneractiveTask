@@ -109,6 +109,7 @@ dependencies {
     implementation deps.koin.android
     implementation deps.koin.viewmodel
 
+    implementation deps.ui.flashbar
 
     //Android libraries
     implementation deps.android_support.appcompat
@@ -120,6 +121,12 @@ dependencies {
     implementation deps.android_support.annotations
     implementation deps.android_support.constraint_layout
     implementation deps.android_support.fragment_ktx
+
+
+
+    //Glide
+    implementation  deps.glide.core
+    kapt  deps.glide.compiler
 
 
 
