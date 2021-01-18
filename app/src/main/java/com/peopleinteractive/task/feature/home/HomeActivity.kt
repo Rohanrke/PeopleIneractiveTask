@@ -42,6 +42,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
             adapter.submitList(it)
         })
 
+        viewModel.refreshed.observe(this, {
+                binding.swipeRefresh.isRefreshing = false
+        })
+
         viewModel.errorMessage.observe(this, {
             Flashbar.Builder(activity = this@HomeActivity)
                 .gravity(Flashbar.Gravity.BOTTOM)

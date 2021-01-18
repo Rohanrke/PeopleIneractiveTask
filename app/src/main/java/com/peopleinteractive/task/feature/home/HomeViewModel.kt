@@ -23,6 +23,10 @@ class HomeViewModel(
     val userListLiveData: LiveData<List<User>>
         get() = _userListLiveData
 
+    private val _refreshed = MutableLiveData<Boolean>(false)
+    val refreshed: LiveData<Boolean>
+        get() = _refreshed
+
     fun fetchUsers() {
         viewModelScope.launch(context) {
             _state.postValue(ProgressState.LOADING)
@@ -58,10 +62,14 @@ class HomeViewModel(
                 val res = repository.fetchUsers()
                 if (res is ResultState.Success) {
                     _userListLiveData.postValue(res.data)
+                }else if (res is ResultState.Error){
+                    _errorMessage.postValue(res.error.errorMessage)
                 }
             } else {
+
                 _messageRes.postValue(R.string.no_network)
             }
+            _refreshed.postValue(false)
         }
     }
 }

@@ -102,8 +102,6 @@ dependencies {
     api project(':domain')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-
-
     // DI
     implementation deps.koin.core
     implementation deps.koin.android
@@ -122,14 +120,16 @@ dependencies {
     implementation deps.android_support.constraint_layout
     implementation deps.android_support.fragment_ktx
 
+    androidTestImplementation deps.test.runner
+
+    testImplementation deps.junit.core
+
+    testImplementation deps.mockk.core
+    testImplementation deps.mockk.android
+
 
 
     //Glide
     implementation  deps.glide.core
     kapt  deps.glide.compiler
-
-
-
-
-
 }
